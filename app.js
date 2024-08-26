@@ -7,9 +7,12 @@ const obj = {
     "age"  : 25
 };
 
-client.connect();
-const db = client.db(dbName);
-const collection = db.collection('users');
+async function main() {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection('users');
 
-collection.insertOne(obj);
-collection.findOne(obj).then((res) => console.log(res));
+    collection.insertOne(obj);
+    collection.findOne(obj).then((res) => console.log(res));   
+}
+main();
